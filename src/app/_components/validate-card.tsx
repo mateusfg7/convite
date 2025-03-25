@@ -30,7 +30,7 @@ export function ValidateCard({
         setCode('')
         onValidate(code)
 
-        return 'Presença confirmada!'
+        return 'Convite validado!'
       },
       error: (err) => err.message,
     })
@@ -57,11 +57,8 @@ export function ValidateCard({
         />
       </CardContent>
       <CardFooter>
-        <Button
-          onClick={handleSubmit}
-          className='w-full hover:cursor-pointer hover:bg-green-600'
-        >
-          <span>Confirmar presença</span>
+        <Button onClick={handleSubmit} className='w-full hover:cursor-pointer'>
+          <span>Validar convite</span>
           <Check />
         </Button>
       </CardFooter>

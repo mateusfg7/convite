@@ -2,10 +2,13 @@
 CREATE TABLE `Convite` (
     `id` INTEGER NOT NULL AUTO_INCREMENT,
     `codigo` VARCHAR(191) NOT NULL,
-    `nome_convidado` VARCHAR(191) NOT NULL,
-    `empresa_convidado` VARCHAR(191) NOT NULL,
-    `telefone_convidado` VARCHAR(191) NULL,
+    `confirmou_presenca` BOOLEAN NOT NULL DEFAULT false,
+    `convidado` VARCHAR(191) NOT NULL,
+    `representante` VARCHAR(191) NOT NULL,
+    `contato` VARCHAR(191) NULL,
     `possui_acompanhante` BOOLEAN NOT NULL DEFAULT false,
+    `nome_acompanhante` VARCHAR(191) NULL,
+    `convite_especial` BOOLEAN NOT NULL DEFAULT false,
     `criado_em` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `atualizado_em` DATETIME(3) NOT NULL,
 

@@ -13,10 +13,5 @@ export async function validateCode(code: string): Promise<Convite> {
   if (!invitation) throw new Error('Código ou nome inválidos!')
   if (invitation.confirmou_presenca) throw new Error('Código já confirmado!')
 
-  const updatedInvitation = await prismaClient.convite.update({
-    where: { id: invitation.id },
-    data: { confirmou_presenca: true },
-  })
-
-  return updatedInvitation
+  return invitation
 }

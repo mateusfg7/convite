@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react'
 import ExportGuestsCSV from './_components/export-csv'
 import { InvitationList } from './_components/invitation-list'
-import { listInvitations } from './_lib/list-invitations'
+import { listInvitations } from '../../actions/list-invitations'
 import { Convite } from '@prisma/client'
 import { toast } from 'sonner'
 

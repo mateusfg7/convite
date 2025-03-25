@@ -18,12 +18,13 @@ const ExportGuestsCSV = ({
     }
 
     const headers = [
-      'ID',
       'Código',
       'Confirmou Presença',
       'Convidado',
+      'Representante',
       'Contato',
       'Possui Acompanhante',
+      'Nome Acompanhante',
       'Especial',
       'Criado em',
       'Atualizado em',
@@ -33,13 +34,14 @@ const ExportGuestsCSV = ({
       headers.join(','), // Header row
       ...data.map((guest) =>
         [
-          guest.id,
           guest.codigo,
           guest.confirmou_presenca ? 'Sim' : 'Não',
           guest.convidado ?? '',
+          guest.representante ?? '',
           guest.contato ?? '',
           guest.possui_acompanhante ? 'Sim' : 'Não',
-          guest.especial ? 'Sim' : 'Não',
+          guest.nome_acompanhante ?? '',
+          guest.convite_especial ? 'Sim' : 'Não',
           guest.criado_em.toISOString(),
           guest.atualizado_em.toISOString(),
         ]

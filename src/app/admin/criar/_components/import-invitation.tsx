@@ -1,5 +1,6 @@
 import { Convite } from '@prisma/client'
 import React from 'react'
+import { CreateInvitationProps } from '~/actions/create-invitation'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
@@ -16,12 +17,7 @@ type Guest = {
 const ImportCSVButton = ({
   handleImport,
 }: {
-  handleImport: (
-    invitations: Omit<
-      Convite,
-      'id' | 'atualizado_em' | 'criado_em' | 'confirmou_presenca'
-    >[]
-  ) => void
+  handleImport: (invitations: CreateInvitationProps[]) => void
 }) => {
   const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
     const file = e.target.files?.[0]
@@ -66,11 +62,11 @@ const ImportCSVButton = ({
             inv.Contato === 'Extra Amarildo'
 
           return {
-            convidado: !special ? inv.Convidado : null,
+            convidado: inv.Convidado,
             contato: inv.Contato,
             possui_acompanhante: inv['Libera acompanhante'] === 's',
             codigo: genCode().toUpperCase(),
-            especial: special,
+            convite_especial: special,
           }
         })
     )

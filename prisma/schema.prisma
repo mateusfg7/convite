@@ -13,11 +13,14 @@ model Convite {
   codigo             String  @unique
   confirmou_presenca Boolean @default(false)
 
-  convidado String?
-  contato   String?
+  convidado     String
+  representante String?
+  contato       String?
 
   possui_acompanhante Boolean @default(false)
-  especial            Boolean @default(false)
+  nome_acompanhante   String?
+
+  convite_especial Boolean @default(false)
 
   criado_em     DateTime @default(now())
   atualizado_em DateTime @updatedAt

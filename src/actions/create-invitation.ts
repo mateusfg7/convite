@@ -1,14 +1,13 @@
 'use server'
 
-import { Convite } from '@prisma/client'
+import { Convite, Prisma } from '@prisma/client'
 import { prismaClient } from '~/lib/prisma'
 
-type Props = Pick<
-  Convite,
-  'convidado' | 'contato' | 'possui_acompanhante' | 'codigo'
->
+export type CreateInvitationProps = Prisma.ConviteCreateInput
 
-export async function createInvitation(data: Props | Props[]) {
+export async function createInvitation(
+  data: CreateInvitationProps | CreateInvitationProps[]
+) {
   if (Array.isArray(data)) {
     return await prismaClient.convite.createMany({
       data,

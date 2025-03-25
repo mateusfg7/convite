@@ -5,10 +5,13 @@ import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { Switch } from '~/components/ui/switch'
-import { createInvitation } from './_lib/create-invitation'
+import {
+  createInvitation,
+  CreateInvitationProps,
+} from '../../../actions/create-invitation'
 import { toast } from 'sonner'
 import { genCode } from '~/lib/gen-code'
-import { Convite } from '@prisma/client'
+
 import ImportCSVButton from './_components/import-invitation'
 
 const Field = ({ children }: { children: React.ReactNode }) => (
@@ -37,12 +40,7 @@ export default function CriarConvitePage() {
     )
   }
 
-  function handleImport(
-    data: Omit<
-      Convite,
-      'id' | 'atualizado_em' | 'criado_em' | 'confirmou_presenca'
-    >[]
-  ) {
+  function handleImport(data: CreateInvitationProps[]) {
     toast.promise(() => createInvitation(data), {
       loading: 'Importando convites...',
       success: 'Convites importados com sucesso',
