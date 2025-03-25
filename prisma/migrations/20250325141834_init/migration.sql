@@ -4,7 +4,7 @@ CREATE TABLE `Convite` (
     `codigo` VARCHAR(191) NOT NULL,
     `confirmou_presenca` BOOLEAN NOT NULL DEFAULT false,
     `convidado` VARCHAR(191) NOT NULL,
-    `representante` VARCHAR(191) NOT NULL,
+    `representante` VARCHAR(191) NULL,
     `contato` VARCHAR(191) NULL,
     `possui_acompanhante` BOOLEAN NOT NULL DEFAULT false,
     `nome_acompanhante` VARCHAR(191) NULL,

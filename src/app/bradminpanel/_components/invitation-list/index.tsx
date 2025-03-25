@@ -1,5 +1,5 @@
 import { Convite } from '@prisma/client'
-import { Check, Stars, X } from 'lucide-react'
+import { Check, X } from 'lucide-react'
 import {
   Card,
   CardContent,
@@ -21,6 +21,7 @@ export function InvitationList({ invitations }: { invitations: Convite[] }) {
             .sort((a, b) => a.convidado?.localeCompare(b.convidado))
             .map((inv) => (
               <Card
+                key={inv.id}
                 data-confirmou={inv.confirmou_presenca}
                 className='justify-between data-[confirmou="true"]:border-green-600/50'
               >

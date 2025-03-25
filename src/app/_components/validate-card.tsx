@@ -1,7 +1,7 @@
 'use client'
 
 import { Check } from 'lucide-react'
-import Image from 'next/image'
+
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from '~/components/ui/button'
@@ -10,14 +10,11 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
 } from '~/components/ui/card'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { validateCode } from '~/lib/validate-code'
 
-import logo from '~/assets/logo.png'
 import { CustomCardHeader } from './card-header'
 
 export function ValidateCard({

@@ -1,4 +1,3 @@
-import { Convite } from '@prisma/client'
 import React from 'react'
 import { CreateInvitationProps } from '~/actions/create-invitation'
 import { Button } from '~/components/ui/button'

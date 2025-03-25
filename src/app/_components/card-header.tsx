@@ -1,5 +1,5 @@
 import Image from 'next/image'
-import { CardDescription, CardHeader, CardTitle } from '~/components/ui/card'
+import { CardHeader, CardTitle } from '~/components/ui/card'
 
 import logo from '~/assets/logo.png'
 

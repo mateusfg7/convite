@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   database:
     image: mariadb:10.11
@@ -7,18 +9,19 @@ services:
       MARIADB_DATABASE: convite
       MARIADB_USER: bradmin
       MARIADB_PASSWORD: Br@@5up3r
-      MARIADB_PORT: 3306
-    ports:
-      - '3306:3306'
     volumes:
       - ./data/database:/var/lib/mysql
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
-  # webapp:
-  #   container_name: 'brtools-webapp__dev'
-  #   image: oven/bun:1.2.2-slim
-  #   depends_on:
-  #     - api
-  #   command: sh -c "bun install && bun --bun dev"
-  #   ports:
-  #     - '3000:3000'
+  web:
+    container_name: convite-web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: mysql://bradmin:Br@@5up3r@database:3306/convite
+    command: sh -c "pnpm dlx prisma migrate deploy && pnpm start"
+    ports:
+      - '3333:3000'
+    depends_on:
+      - database

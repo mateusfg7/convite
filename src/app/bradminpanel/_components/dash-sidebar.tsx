@@ -25,12 +25,12 @@ export function DashSidebar({
             <SidebarMenu>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href='/admin'>Listar convites</Link>
+                  <Link href='/bradminpanel'>Listar convites</Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
               <SidebarMenuItem>
                 <SidebarMenuButton asChild>
-                  <Link href='/admin/criar'>Criar convite</Link>
+                  <Link href='/bradminpanel/criar'>Criar convite</Link>
                 </SidebarMenuButton>
               </SidebarMenuItem>
             </SidebarMenu>

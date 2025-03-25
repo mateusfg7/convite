@@ -9,8 +9,6 @@ import {
   CardContent,
   CardDescription,
   CardFooter,
-  CardHeader,
-  CardTitle,
 } from '~/components/ui/card'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
@@ -56,7 +54,7 @@ export function ConfirmationCard({
           onFinish()
           return 'Presença confirmado!'
         },
-        error: (err) => 'Erro ao confirmar nome!',
+        error: () => 'Erro ao confirmar nome!',
         richColors: true,
       }
     )
