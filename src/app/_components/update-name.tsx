@@ -20,6 +20,7 @@ import { updateInvitation } from '../../actions/update-invitation'
 
 import { Check, Loader2, Stars } from 'lucide-react'
 import { getInvitation } from '~/actions/get-invitation'
+import { CustomCardHeader } from './card-header'
 
 export function ConfirmationCard({
   code,
@@ -93,9 +94,8 @@ export function ConfirmationCard({
   }
 
   return (
-    <Card className='max-w-[400px] w-full space-y-1'>
-      <CardHeader className='flex flex-wrap items-center justify-between'>
-        <CardTitle>BrSuper</CardTitle>
+    <Card className='max-w-[400px] w-full space-y-1 z-50 bg-card/70'>
+      <CustomCardHeader>
         {!convite.convite_especial && (
           <CardDescription>Confirmação de nome</CardDescription>
         )}
@@ -107,7 +107,8 @@ export function ConfirmationCard({
             </div>
           </CardDescription>
         )}
-      </CardHeader>
+      </CustomCardHeader>
+
       <CardContent className='space-y-2'>
         {!convite.convite_especial && (
           <div className='text-center p-1'>

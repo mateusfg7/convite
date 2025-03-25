@@ -1,6 +1,6 @@
 'use server'
 
-import { Convite, Prisma } from '@prisma/client'
+import { Prisma } from '@prisma/client'
 import { prismaClient } from '~/lib/prisma'
 
 export type CreateInvitationProps = Prisma.ConviteCreateInput

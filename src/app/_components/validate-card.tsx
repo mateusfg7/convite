@@ -1,6 +1,7 @@
 'use client'
 
 import { Check } from 'lucide-react'
+import Image from 'next/image'
 import { useState } from 'react'
 import { toast } from 'sonner'
 import { Button } from '~/components/ui/button'
@@ -15,6 +16,9 @@ import {
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
 import { validateCode } from '~/lib/validate-code'
+
+import logo from '~/assets/logo.png'
+import { CustomCardHeader } from './card-header'
 
 export function ValidateCard({
   onValidate,
@@ -37,11 +41,10 @@ export function ValidateCard({
   }
 
   return (
-    <Card className='max-w-[400px] w-full'>
-      <CardHeader className='flex flex-wrap items-center justify-between'>
-        <CardTitle>BrSuper</CardTitle>
+    <Card className='max-w-[400px] w-full z-50 bg-card/70'>
+      <CustomCardHeader>
         <CardDescription>Confirmação de presença</CardDescription>
-      </CardHeader>
+      </CustomCardHeader>
       <CardContent className='space-y-4'>
         <Label>Código do convite</Label>
         <Input

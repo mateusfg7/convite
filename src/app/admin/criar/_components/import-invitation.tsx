@@ -4,14 +4,14 @@ import { CreateInvitationProps } from '~/actions/create-invitation'
 import { Button } from '~/components/ui/button'
 import { Input } from '~/components/ui/input'
 import { Label } from '~/components/ui/label'
-import { genCode } from '~/lib/gen-code'
 
 type Guest = {
-  Convidado: string
-  Contato: string
-  'Libera acompanhante': string
-  'S ou N': string
-  'Vem?': string
+  codigo: string
+  confirmou_presenca: string
+  convidado: string
+  contato: string
+  possui_acompanhante: 'Sim' | 'Não'
+  especial: 'Sim' | 'Não'
 }
 
 const ImportCSVButton = ({
@@ -28,11 +28,12 @@ const ImportCSVButton = ({
     const headers = rows[0].split(',')
 
     const expectedHeaders = [
-      'Convidado',
-      'Contato',
-      'Libera acompanhante',
-      'S ou N',
-      'Vem?',
+      'codigo',
+      'confirmou_presenca',
+      'convidado',
+      'contato',
+      'possui_acompanhante',
+      'especial',
     ]
 
     // Validate headers
@@ -45,30 +46,29 @@ const ImportCSVButton = ({
     const data: Guest[] = rows.slice(1).map((row) => {
       const values = row.split(',')
       return {
-        Convidado: values[0],
-        Contato: values[1],
-        'Libera acompanhante': values[2],
-        'S ou N': values[3],
-        'Vem?': values[4],
+        codigo: values[0].trim(),
+        confirmou_presenca: values[1].trim(),
+        convidado: values[2].trim(),
+        contato: values[3].trim(),
+        possui_acompanhante: values[4].trim() as 'Sim' | 'Não',
+        especial: values[5].trim() as 'Sim' | 'Não',
       }
     })
 
     handleImport(
-      data
-        .filter((inv) => inv.Convidado && inv.Convidado.length > 0)
-        .map((inv) => {
-          const special =
-            inv.Contato === 'Extra Emergência' ||
-            inv.Contato === 'Extra Amarildo'
+      data.map((inv) => {
+        const special =
+          inv.convidado === 'Extra Emergência' ||
+          inv.convidado === 'Extra Amarildo'
 
-          return {
-            convidado: inv.Convidado,
-            contato: inv.Contato,
-            possui_acompanhante: inv['Libera acompanhante'] === 's',
-            codigo: genCode().toUpperCase(),
-            convite_especial: special,
-          }
-        })
+        return {
+          convidado: inv.convidado,
+          contato: inv.contato,
+          possui_acompanhante: inv.possui_acompanhante === 'Sim',
+          codigo: inv.codigo,
+          convite_especial: special,
+        }
+      })
     )
 
     // You can now send this data to your backend or store it
