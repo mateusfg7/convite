@@ -1,6 +1,5 @@
 'use server'
 
-import { Convite } from '@prisma/client'
 import { prismaClient } from './prisma'
 
 export async function validateCode(
