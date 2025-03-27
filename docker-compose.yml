@@ -9,6 +9,8 @@ services:
       MARIADB_DATABASE: convite
       MARIADB_USER: bradmin
       MARIADB_PASSWORD: Br@@5up3r
+    ports:
+      - 0633:3306
     volumes:
       - ./data/database:/var/lib/mysql
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
@@ -19,7 +21,7 @@ services:
       context: .
       dockerfile: Dockerfile
     environment:
-      DATABASE_URL: mysql://bradmin:Br@@5up3r@database:3306/convite
+      DATABASE_URL: mysql://bradmin:Br@@5up3r@brtools.brsuper.com.br:0633/convite
     command: sh -c "pnpm dlx prisma migrate deploy && pnpm start"
     ports:
       - '3333:3000'
