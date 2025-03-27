@@ -2,11 +2,15 @@
 
 import { useRouter } from 'next/navigation'
 import { ConfirmationCard } from '../_components/update-name'
+import { use } from 'react'
 
-export default function Page({ params }: { params: { code: string } }) {
+export default function Page({
+  params,
+}: {
+  params: Promise<{ code: string }>
+}) {
+  const { code } = use(params)
   const router = useRouter()
 
-  return (
-    <ConfirmationCard code={params.code} onFinish={() => router.push('/')} />
-  )
+  return <ConfirmationCard code={code} onFinish={() => router.push('/')} />
 }
