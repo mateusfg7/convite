@@ -3,6 +3,23 @@
 
 @custom-variant dark (&:is(.dark *));
 
+@theme {
+  --animate-blur-in: blur-in 0.5s ease-in-out;
+
+  @keyframes blur-in {
+    from {
+      filter: blur(10px);
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      filter: blur(0);
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
