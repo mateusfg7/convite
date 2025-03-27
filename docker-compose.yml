@@ -27,3 +27,16 @@ services:
       - '3333:3000'
     depends_on:
       - database
+
+  web-green:
+    container_name: convite-web-green
+    build:
+      context: .
+      dockerfile: Dockerfile
+    environment:
+      DATABASE_URL: mysql://bradmin:Br@@5up3r@brtools.brsuper.com.br:0633/convite
+    command: sh -c "pnpm dlx prisma migrate deploy && pnpm start"
+    ports:
+      - '3334:3000'
+    depends_on:
+      - database
