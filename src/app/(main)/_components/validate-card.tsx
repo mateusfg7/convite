@@ -26,12 +26,18 @@ export function ValidateCard() {
   function handleSubmit() {
     toast.promise(() => validateCode(code), {
       loading: 'Confirmando convite...',
-      success: () => {
-        setCode('')
+      success: (data) => {
+        switch (data) {
+          case 'already_confirmed':
+            return 'Convite já confirmado!'
 
-        router.push(`/${code}`)
+          case 'invalid':
+            throw new Error('Código inválido!')
 
-        return 'Convite validado!'
+          case 'ok':
+            router.push(`/${code}`)
+            return 'Convite validado!'
+        }
       },
       error: (err) => err.message,
     })
