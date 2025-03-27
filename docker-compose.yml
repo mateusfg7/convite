@@ -15,7 +15,7 @@ services:
       - ./data/database:/var/lib/mysql
       - ./docker-entrypoint-initdb.d:/docker-entrypoint-initdb.d
 
-  web:
+  web-blue:
     container_name: convite-web
     build:
       context: .
